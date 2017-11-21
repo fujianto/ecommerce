@@ -5,9 +5,11 @@ const app = require('express') ();
 const customerRouter = require('./routes/customerRoute')
 const productRouter = require('./routes/productRoute');
 const transactionRouter = require('./routes/transactionRoute');
+const cors = require('cors')
 
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

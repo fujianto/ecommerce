@@ -1,33 +1,38 @@
 const TransactionModel = require('../models/transaction');
 const ObjectId = require('mongodb').ObjectID;
-
-/*const findTransaction = (req, res) => {
-	TransactionModel.find().populate('booklist').populate('customer').exec()
-		.then((datas) => {
-				res.status(200).send(datas);
-			}).catch(err => {
-				res.status(500).send({message: err});
-			})
-}*/
+const customerID = "5a13c58c9919f65290e6ecac";
 
 const findAll = (req, res) => {
-	TransactionModel.find({customer: ObjectId(req.body.customerId)}, (err, product) => {
+	/*TransactionModel.find({customer: ObjectId(req.header('customerId'))}, (err, product) => {
 		if (err) {
 			res.status(500).send({message: err.message});
 		}
 
 		res.status(200).send(product);
-	});
+	});*/
+
+		TransactionModel.find({customer: ObjectId(req.header('customerId'))})
+		.populate('customer').populate(
+			{
+				path: 'productlist.productId',
+				model: 'Product'
+			}
+		).exec()
+		.then((product) => {
+				res.status(200).send(product);
+			}).catch(err => {
+				res.status(500).send({message: err});
+			})
 }
 
 const create = (req, res) => {
-	let dueDate = new Date();
-	dueDate.setDate(dueDate.getDate() + +req.body.days)
+	let reqTransaction = req.body.transaction;
 
 	let transaction = new TransactionModel({
-		customer: req.body.customerId,
+		customer: reqTransaction.customer,
 		transaction_date: new Date(),
-		productlist: req.body.productlist
+		productlist: reqTransaction.productlist,
+		total: reqTransaction.total
 	});
 
 	transaction.save((err, createdTransaction) => {
