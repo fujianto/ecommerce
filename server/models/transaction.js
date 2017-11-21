@@ -14,6 +14,9 @@ const transactionSchema = new Schema({
 				type: Schema.Types.ObjectId,
 				ref: 'Product'
 			},
+			name: {
+				type: String,
+			},
 			quantity: {
 				type: Number,
 			},

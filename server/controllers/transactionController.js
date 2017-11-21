@@ -1,16 +1,9 @@
 const TransactionModel = require('../models/transaction');
+const ProductModel = require('../models/product');
 const ObjectId = require('mongodb').ObjectID;
 const customerID = "5a13c58c9919f65290e6ecac";
 
 const findAll = (req, res) => {
-	/*TransactionModel.find({customer: ObjectId(req.header('customerId'))}, (err, product) => {
-		if (err) {
-			res.status(500).send({message: err.message});
-		}
-
-		res.status(200).send(product);
-	});*/
-
 		TransactionModel.find({customer: ObjectId(req.header('customerId'))})
 		.populate('customer').populate(
 			{
