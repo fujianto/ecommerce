@@ -1,7 +1,8 @@
 const TransactionModel = require('../models/transaction');
 const ProductModel = require('../models/product');
 const ObjectId = require('mongodb').ObjectID;
-const customerID = "5a13c58c9919f65290e6ecac";
+// const customerID = "5a13c58c9919f65290e6ecac";
+const customerID = "5a14fe517f697714134e3bc4"
 
 const findAll = (req, res) => {
 		TransactionModel.find({customer: ObjectId(req.header('customerId'))})
