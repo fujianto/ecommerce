@@ -24,9 +24,9 @@ const create = (req, res) => {
 	product.save((err, createdProduct) => {
 		if (err) {
 			res.status(500).send({message: err.message});
+		} else {
+			 res.status(200).send({product: createdProduct, message: 'Product Added'});
 		}
-
-    res.status(200).send({product: createdProduct, message: 'Product Added'});
   });
 }
 
