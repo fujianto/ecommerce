@@ -3,6 +3,7 @@ const url = 'mongodb://admin:admin@mongocrud-shard-00-00-ilsdt.mongodb.net:27017
 const mongoose = require('mongoose').connect(url);
 const Schema = mongoose.Schema;
 
+
 const productSchema = new Schema({
 	name:  String,
 	price:   Number,
