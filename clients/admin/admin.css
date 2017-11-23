@@ -1,0 +1,73 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.admin-header {
+	background: #00796B;
+	color: #fff;
+	padding: 2rem 4rem;
+	margin-bottom: 3rem;
+}
+
+.admin-header a {
+	color: #fff;
+}
+
+.admin-header a:hover {
+	color: #FFC107;
+}
+
+.admin-header a:hover {
+	text-decoration: none;
+}
+
+a {
+	color: #00796B;
+}
+
+.admin-menu {
+	text-align: right;
+}
+
+.admin-menu ul {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.admin-menu li {
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+.admin-menu p {
+	margin-bottom: 0;
+}
+
+.site-title {
+	font-weight: bold;
+	margin: 0;
+	font-size: 2rem;
+}
+
+.no-mt{
+	margin-top: 0;
+}
+
+.admin-heading-title {
+	margin-top: 2rem;
+	font-weight: 300;
+	margin-bottom: 2rem;
+}
+
+.btn-new {
+	margin-bottom: 2rem;
+}
+
+.input-group {
+	margin-bottom: 2rem;
+}
+
+.u-full-width {
+	width: 100%;
+}

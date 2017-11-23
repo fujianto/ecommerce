@@ -13,6 +13,8 @@ const findAll = (req, res) => {
 
 const create = (req, res) => {
 	let customer = new CustomerModel({
+		username: req.body.username,
+		password: req.body.password,
     name: req.body.name,
     address:   req.body.address,
     email: req.body.email,
@@ -33,6 +35,8 @@ const update = (req, res) => {
 	CustomerModel.findOneAndUpdate(
 		{ _id : ObjectId(req.params.customerId) },
 		{
+			username: req.body.username || customer.username,
+			password: req.body.password || customer.password,
 			name: req.body.name || customer.name,
 			address:   req.body.address || customer.address,
 			email: req.body.email || customer.email,

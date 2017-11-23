@@ -1,10 +1,9 @@
 // Productions
-// const apiEndpointRoot = "http://35.186.144.106";
-// const apiEndpointRoot = "http://api.septianfujianto.com";
-// const customerID = "5a14fe517f697714134e3bc4"
+const apiEndpointRoot = "http://api.septianfujianto.com";
+const customerID = "5a14fe517f697714134e3bc4"
 // Development
-const customerID = "5a13c58c9919f65290e6ecac";
-const apiEndpointRoot = "http://localhost:3000";
+// const customerID = "5a13c58c9919f65290e6ecac";
+// const apiEndpointRoot = "http://localhost:3000";
 
 var app = new Vue({
   el: '#app',

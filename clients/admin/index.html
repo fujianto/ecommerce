@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Member Area</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<header class="admin-header">
+			<div class="row">
+				<div class="col-md-4">
+					<h1 class="site-title"><a href="#">Admin Area</a></h1><!-- /.site-title -->
+				</div><!-- /.col-md-4 -->
+
+				<div class="col-md-8">
+					<nav class="admin-menu">
+						<ul>
+							<li><p>Welcome, <span id="user-name">Budi</span></p></li>
+							<li> | <a href="#" class="btn-logout"> Logout</a></li>
+						</ul>
+					</nav><!-- /.admin-menu -->
+				</div><!-- /.col-md-8 -->
+			</div><!-- /.row -->
+		</header><!-- /.admin-header -->
+
+		<main class="wrap">
+			<div class="container">
+				<div class="row col-md-12">
+					<div>
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation"><a href="#customer" aria-controls="customer" role="tab" data-toggle="tab">Customer</a></li>
+							<li role="presentation" class="active"><a href="#product" aria-controls="active product" role="tab" data-toggle="tab">Product</a></li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane" id="customer">
+								<h2 class="admin-heading-title">Customer Area</h2>
+
+								<div class="table-wrapper">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Username</th>
+												<th>Email</th>
+												<th>Address</th>
+												<th>Phone Number</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td>3434435</td>
+												<td>mastah</td>
+												<td>mastah@mail.com</td>
+												<td>Jl. Iskandar No. 55</td>
+												<td>08682348234</td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- /.table -->
+								</div><!-- /.table-wrapper -->
+							</div>
+							<div role="tabpanel" class="tab-pane active" id="product">
+								<h2 class="admin-heading-title">Product Area</h2>
+
+								<div class="table-wrapper">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Gambar</th>
+												<th>Nama Produk</th>
+												<th>Harga</th>
+												<th>Stock</th>
+												<th>Kategori</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr>
+												<td>3434435</td>
+												<td>images/steam.jpg</td>
+												<td>Voucher Steam $20</td>
+												<td>Rp. 300.000</td>
+												<td>4</td>
+												<td>Steam</td>
+												<td>
+													<a href="#" class="btn btn-warning btn-edit"><i class="fa fa-cog"></i> Ubah</a>
+													<a href="#" class="btn btn-danger btn-edit"><i class="fa fa-times-circle"></i> Hapus</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- /.table -->
+
+									<a href="#" class="btn btn-info btn-new-product" data-toggle="modal" data-target="#newProductModal"><i class="fa fa-plus-circle"></i> Tambah Produk baru</a>
+								</div><!-- /.table-wrapper -->
+							</div>
+						</div>
+					</div>
+				</div><!-- /.row col-md-12 -->
+			</div><!-- /.container -->
+		</main><!-- /.wrap -->
+
+		<div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="newProductModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="newProductModalLabel">New Product</h4>
+					</div>
+					<div class="modal-body">
+						<form action="#" v-on:submit="createNewProduct()">
+							<div class="input-group u-full-width">
+								<input class="form-control" type="text" id="productName" ref="productName" name="productName" placeholder="Nama Produk" />
+							</div>
+
+							<div class="input-group u-full-width">
+								<input class="form-control" type="text" id="productPrice" ref="productPrice" name="productPrice" placeholder="Harga Produk" />
+							</div>
+
+							<div class="input-group u-full-width">
+								<input class="form-control" type="text" id="productQuantity" ref="productQuantity" name="productQuantity" placeholder="Jumlah Stok Produk" />
+							</div>
+
+							<div class="input-group u-full-width">
+								<input class="form-control" type="text" id="productCategory" ref="productCategory" name="productCategory" placeholder="Kategori Produk" />
+							</div>
+
+							<div class="input-group u-full-width">
+								<input class="form-control" type="text" id="productImage" ref="productImage" name="productImage" placeholder="Gambar Produk" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button @click.prevent="createNewProduct()" type="button" class="btn btn-primary">Add Product</button>
+						<!-- <input type="submit" class="btn btn-primary" value="Add Product" /> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- /#app -->
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="admin.js"></script>
+</body>
+</html>

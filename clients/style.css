@@ -151,10 +151,6 @@ main.content {
 	border-bottom: 2px solid #ddd;
 }
 
-.modal-dialog-wide {
-	width: 1000px;
-}
-
 .btn-cart {
 	position: relative;
 }
@@ -183,4 +179,25 @@ main.content {
 .flex-wrapper {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.widget {
+	margin-bottom: 2rem;
+}
+
+/* Medium devices (desktops, 1025px and up) */
+@media (min-width:1025px) {
+	.modal-dialog-wide {
+		width: 1000px;
+	}
+
+	// .modal-body {
+	// 	overflow-x: scroll
+	// }
+}
+
+@media (min-width:528px) {
+	.widget {
+		margin-bottom: 2rem;
+	}
 }
