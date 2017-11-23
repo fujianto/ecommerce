@@ -183,7 +183,7 @@
                     <div class="flex-item" v-for="product in products">
                       <div class="thumbnail same-height">
 
-                        <img v-bind:src="`/images/${product.image}`" alt="product">
+                        <img v-bind:src="`${product.image}`" alt="product">
                         <div class="caption">
                           <h3 class="h4 box-title"><a href="#">{{ product.name }}</a></h3>
                           <h4 class="box-price">Rp. {{ formatRupiah(product.price) }}</h4>

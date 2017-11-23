@@ -1,11 +1,14 @@
 const apiEndpointRoot = "http://api.septianfujianto.com";
 const customerID = "5a14fe517f697714134e3bc4"
 
+
 var app = new Vue({
 	el: '#app',
 	// State
 	data: {
-
+		products: [],
+		users: [],
+		transactions: []
 	},
 	// Methods
 	methods: {
@@ -49,7 +52,7 @@ var app = new Vue({
 		},
 
 		createNewProduct() {
-			console.log('~~~~~~~~~~ Create New Product');
+			console.log('~~~~~~~~~~ Create New Product')
 			let productName = this.$refs.productName.value;
 			let productPrice = this.$refs.productPrice.value;
 			let productQuantity = this.$refs.productQuantity.value;
@@ -73,9 +76,5 @@ var app = new Vue({
 
         }).catch(err => console.error(err));
 		},
-	},
-	// Life Cycle
-	created: {
-
 	}
 })

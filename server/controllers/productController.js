@@ -1,3 +1,5 @@
+// const multer  = require('multer')
+// const upload = multer({});const upload = multer({});
 const ProductModel = require('../models/product');
 const ObjectId = require('mongodb').ObjectID;
 
@@ -12,9 +14,16 @@ const findAll = (req, res) => {
 }
 
 const create = (req, res) => {
+	/*res.send({
+		status: 200,
+		message: 'Your file is successfully uploaded',
+		link: req.file.cloudStoragePublicUrl,
+		location: req.body.location
+	})*/
+
 	let product = new ProductModel({
 		name:  req.body.name,
-		image: req.body.image,
+		image: req.file.cloudStoragePublicUrl,
 		price:    +req.body.price,
 		quantity:  +req.body.quantity,
 		category:  req.body.category,
