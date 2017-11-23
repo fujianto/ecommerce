@@ -3,6 +3,11 @@ body {
 	background: #fff url('images/dust_scratches.png') ;
 }
 
+p {
+	margin-bottom: 1.6rem;
+	line-height: 2.2rem;
+}
+
 a {
 	color: #d71149;
 }
