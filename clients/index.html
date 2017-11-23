@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SumberVoucher</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand site-title" href="index.html">SumberVoucher</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategori
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#">Amazon Gift Card</a>
+                    </li>
+                    <li>
+                      <a href="#">iTunes Gift Card</a>
+                    </li>
+                    <li>
+                      <a href="#">Google Play</a>
+                    </li>
+                    <li>
+                      <a href="#">Ebay Card</a>
+                    </li>
+                    <li>
+                      <a href="#">Amazon Card</a>
+                    </li>
+                    <li>
+                      <a href="#">Steam Gift card</a>
+                    </li>
+                    <li>
+                      <a href="#">Blizzard</a>
+                    </li>
+                    <li>
+                      <a href="#">Xbox Live</a>
+                    </li>
+                    <li>
+                      <a href="#">Spotify</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="products.html">Semua Produk</a>
+                </li>
+                <li>
+                  <a class="btn-cart" href="#" data-toggle="modal" data-target="#cartModal" v-on:click="clearLastTransaction()">
+                    <i class="fa fa-shopping-cart"></i> Cart <span id="cart-count">{{ carts.length }}</span>
+                  </a>
+                  <!-- <a href="cart.html">Cart</a> -->
+                </li>
+                <li>
+                  <a href="#" data-toggle="modal" data-target="#transactionHistoryModal">Transaction History</a>
+                  <!-- <a href="checkout.html">Checkout</a> -->
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Area
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#" data-toggle="modal" data-target="#newProductModal">Add New Product</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Cari Produk">
+                    </div>
+                  </form>
+                </li>
+                <li>
+                  <a class="btn-login" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+        </nav>
+      </header>
+
+      <section class="slider featured-slider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+              <a href="#"><img src="images/slider.jpg" alt="Slider Image"></a>
+              <div class="carousel-caption">
+                <!-- <p>Get Discount up to 50%</p> -->
+              </div>
+            </div>
+
+            <div class="item">
+              <a href="#"><img src="images/slider2.jpg" alt="Slider Image"></a>
+              <div class="carousel-caption">
+                <!-- <p>Buy Now!</p> -->
+              </div>
+            </div>
+
+            <div class="item">
+              <a href="#"><img src="images/slider3.jpg" alt="Slider Image"></a>
+              <div class="carousel-caption">
+                <!-- <p>For your loved one</p> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section><!-- /.slider -->
+
+      <div class="container">
+        <main class="content">
+          <div class="featuredpro-tab">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#new-product" aria-controls="new-product" role="tab" data-toggle="tab">Produk Terbaru</a></li>
+              <li role="presentation"><a href="#featured" aria-controls="featured" role="tab" data-toggle="tab">Pilihan Kami</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="new-product">
+                <div class="product-grid-wrapper">
+                  <div class="flex-wrapper">
+                    <div class="flex-item" v-for="product in products">
+                      <div class="thumbnail same-height">
+
+                        <img v-bind:src="`/images/${product.image}`" alt="product">
+                        <div class="caption">
+                          <h3 class="h4 box-title"><a href="#">{{ product.name }}</a></h3>
+                          <h4 class="box-price">Rp. {{ formatRupiah(product.price) }}</h4>
+
+                          <div class="action-wrapper">
+                            <a v-on:click="addToCart(product, $event)" href="#" class="btn btn-success btn-cart" data-toggle="modal" data-target="#messageModal">
+                            <i class="fa fa-shopping-cart"></i> Tambah ke Keranjang
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- /.row -->
+                  <a href="#" class="btn btn-lg btn-danger u-full-width">Cek Voucher lainnya</a>
+                </div><!-- /.product-grid-wrapper -->
+              </div>
+
+              <div role="tabpanel" class="tab-pane" id="featured">
+               <div class="product-grid-wrapper">
+
+
+                <a href="#" class="btn btn-lg btn-danger u-full-width">Cek Voucher lainnya</a>
+              </div><!-- /.product-grid-wrapper -->
+              </div>
+            </div>
+
+          </div>
+        </main><!-- /.content -->
+      </div><!-- /.container -->
+
+      <section class="bottom-info">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <div class="widget">
+                <h3 class="h1 no-mt shop-title">SumberVoucher</h3>
+                <p> <b>Address</b>: Jl. Iskandar Raya No 4, Jakarta Selatan 233567</p>
+                <p><b>Email</b>: hi@sumbervoucher.co.id</p>
+              </div><!-- /.widget -->
+            </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <div class="widget">
+                <h3 class="h4 widget-title">Bantuan</h3>
+                <ul class="flat-list">
+                  <li>
+                    <a href="#">Cara Belanja</a>
+                  </li>
+                  <li>
+                    <a href="#">Pembayaran</a>
+                  </li>
+                  <li>
+                    <a href="/#">Jaminan Aman</a>
+                  </li>
+                  <li>
+                    <a href="#e">Tips Berbelanja</a>
+                  </li>
+                </ul>
+              </div><!-- /.widget -->
+            </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <div class="widget">
+                <h3 class="h4 widget-title">Tentang</h3>
+                <ul class="flat-list">
+                  <li>
+                    <a href="#">Konsumen</a>
+                  </li>
+                  <li>
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="/#">Garansi</a>
+                  </li>
+                  <li>
+                    <a href="#e">Kebijakan Pengembalian</a>
+                  </li>
+                </ul>
+              </div><!-- /.widget -->
+            </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <div class="widget">
+                <h3 class="h4 widget-title">Langganan</h3>
+
+                <p>Dapatkan diskon dan promo terbaru dari kami. Silahkan masukkan alamat email anda dibawah ini.</p>
+
+                <form action="#">
+                  <input type="email" placeholder="Email Anda" class="form-control input-lg" name="email_subs" id="email_subs" />
+                  <br />
+                  <button class="btn  btn-danger">Langganan</button>
+                </form>
+              </div><!-- /.widget -->
+            </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </section><!-- /.bottom-info -->
+
+      <footer class="footer">
+        <p>&copy; Copyright 2017 - {{ developer }}</p>
+      </footer><!-- /.footer -->
+
+      <!-- Modals -->
+      <div class="modal" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="messageModalLabel">Pesan</h4>
+            </div>
+            <div class="modal-body">
+              <h3 class="no-mt message-text">{{ message }}</h3>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close" v-if="carts.length > 0" data-toggle="modal" data-target="#cartModal">Cek Keranjang</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="loginModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+              <form action="#">
+                <div class="input-group u-full-width">
+                  <label>Username</label>
+                  <input type="text" name="username" class="form-control u-full-width" value="">
+                </div>
+
+                <br />
+                <div class="input-group u-full-width">
+                  <label>Password</label>
+                  <input type="password" name="password" class="form-control u-full-width" value="">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel">
+        <div class="modal-dialog modal-dialog-wide" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="cartModalLabel">Cart</h4>
+            </div>
+
+            <div class="modal-body">
+              <div class="message-area">
+                <h3 class="no-mt message-text">{{ lastTransaction }}</h3>
+              </div>
+
+              <div class="cart-wrapper" v-if="carts.length > 0">
+                <div class="cart-item" v-for="cart in carts">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img v-bind:src="`images/${cart.image}`" alt="pic">
+                    </div><!-- /.col-md-3 -->
+
+                    <div class="col-md-5">
+                      <p>#{{cart._id}}</p>
+                      <h5 class="cart-item-title"><a href="#">{{cart.name}}</a></h5>
+                      <span class="cart-item-qty">{{cart.quantity}} pcs @ Rp. {{formatRupiah(cart.price / cart.quantity)}}</span>
+                    </div><!-- /.col-md-6 -->
+
+                    <div class="col-md-3">
+                      <h5 class="cart-item-title">Rp. {{formatRupiah(cart.price)}}</h5>
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-md-1">
+                      <a href="#" class="cancle-cart">✖</a>
+                    </div><!-- /.col-md-1 -->
+                  </div><!-- /.row -->
+                </div><!-- /.cart-item -->
+              </div>
+
+              <hr />
+
+              <div class="pay-wrapper" id="payment-area" v-if="carts.length > 0">
+                <h3 class="h4 no-mt" id="total-purchase">Ringkasan Belanja</h3><!-- /#total-purchase.h4 -->
+
+                <div class="row">
+                  <div class="col-md-6">Total Harga:</div><!-- /.col-md-6 -->
+                  <div class="col-md-6"><h4 class="total-price no-mt"> Rp. {{formatRupiah(getTotalCart())}}</h4></div><!-- /.col-md-6 -->
+                </div><!-- /.row -->
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button v-if="carts.length > 0" class="btn btn-danger" id="btnPay" v-on:click="completePayment(carts)">Bayar Pesanan</button>
+              <button class="btn btn-primary" data-dismiss="modal" aria-label="Close">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="transactionHistoryModal" tabindex="-1" role="dialog" aria-labelledby="transactionHistoryModalLabel">
+        <div class="modal-dialog modal-dialog-wide" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="transactionHistoryModalLabel">Histori Transaksi</h4>
+            </div>
+
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Pembelian</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr v-for="transaction in transactions">
+                    <td>#{{ transaction._id }}</td>
+                    <th>{{ getHumanDate(transaction.transaction_date) }}</th>
+                    <td>
+                       <ol class="no-pl">
+                         <li v-for="item in transaction.productlist">
+                          {{ item.name }} | Rp. {{ formatRupiah(item.subTotal) }} - {{ item.quantity }} pcs
+                         </li>
+                        </ol>
+                    </td>
+                    <td>Rp. {{ formatRupiah(transaction.total) }}</td>
+                  </tr>
+                </tbody>
+              </table><!-- /.table -->
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-primary" data-dismiss="modal" aria-label="Close">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="newProductModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="newProductModalLabel">New Product</h4>
+            </div>
+            <div class="modal-body">
+              <form action="#" v-on:submit="createNewProduct()">
+                <div class="input-group u-full-width">
+                  <input class="form-control" type="text" id="productName" ref="productName" name="productName" placeholder="Nama Produk" />
+                </div>
+
+                <div class="input-group u-full-width">
+                  <input class="form-control" type="text" id="productPrice" ref="productPrice" name="productPrice" placeholder="Harga Produk" />
+                </div>
+
+                <div class="input-group u-full-width">
+                  <input class="form-control" type="text" id="productQuantity" ref="productQuantity" name="productQuantity" placeholder="Jumlah Stok Produk" />
+                </div>
+
+                <div class="input-group u-full-width">
+                  <input class="form-control" type="text" id="productCategory" ref="productCategory" name="productCategory" placeholder="Kategori Produk" />
+                </div>
+
+                 <div class="input-group u-full-width">
+                  <input class="form-control" type="text" id="productImage" ref="productImage" name="productImage" placeholder="Gambar Produk" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button @click.prevent="createNewProduct()" type="button" class="btn btn-primary">Add Product</button>
+              <!-- <input type="submit" class="btn btn-primary" value="Add Product" /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /#app -->
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>

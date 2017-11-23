@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>SumberVoucher</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+             <a class="navbar-brand site-title" href="index.html">SumberVoucher</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategori <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Amazon Gift Card</a></li>
+                  <li><a href="#">iTunes Gift Card</a></li>
+                  <li><a href="#">Google Play</a></li>
+                  <li><a href="#">Ebay Card</a></li>
+                  <li><a href="#">Amazon Card</a></li>
+                  <li><a href="#">Steam Gift card</a></li>
+                  <li><a href="#">Blizzard</a></li>
+                  <li><a href="#">Xbox Live</a></li>
+                  <li><a href="#">Spotify</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Semua Produk</a></li>
+              <li><a href="cart.html">Cart</a></li>
+              <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <form class="navbar-form navbar-left">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cari Produk">
+                  </div>
+                </form>
+              </li>
+              <li><a class="btn-login" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header><!-- /.header -->
+
+    <div class="container">
+      <main class="content">
+        <h2 class="h3 no-mt page-title">Cart</h2><!-- /.h3 page-title -->
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="cart-wrapper">
+              <div class="cart-item">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="images/xboxlive.jpg" alt="pic" />
+                  </div><!-- /.col-md-3 -->
+
+                  <div class="col-md-5">
+                    <h5 class="cart-item-title"><a href="#">Voucher Xbox Live $50</a></h5>
+                    <select name="qty">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div><!-- /.col-md-6 -->
+
+                  <div class="col-md-4">
+                    <h5 class="cart-item-title">Rp. 500.000</h5>
+                  </div><!-- /.col-md-4 -->
+
+                  <div class="col-md-1">
+                    <a href="#" class="cancle-cart">&#10006;</a>
+                  </div><!-- /.col-md-1 -->
+                </div><!-- /.row -->
+              </div><!-- /.cart-item -->
+
+              <div class="cart-item">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="images/spotify.jpg" alt="pic" />
+                  </div><!-- /.col-md-3 -->
+
+                  <div class="col-md-5">
+                    <h5 class="cart-item-title"><a href="#">Voucher Spotify $30</a></h5>
+                    <select name="qty">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div><!-- /.col-md-6 -->
+
+                  <div class="col-md-4">
+                    <h5 class="cart-item-title">Rp. 300.000</h5>
+                  </div><!-- /.col-md-4 -->
+
+                  <div class="col-md-1">
+                    <a href="#" class="cancle-cart">&#10006;</a>
+                  </div><!-- /.col-md-1 -->
+                </div><!-- /.row -->
+              </div><!-- /.cart-item -->
+            </div><!-- /.cart-wrapper -->
+          </div>
+
+          <div class="col-md-4">
+            <div class="pay-wrapper">
+              <h3 class="h4 no-mt" id="total-purchase">Total Belanja</h3><!-- /#total-purchase.h4 -->
+              <div class="row">
+                <div class="col-md-6">Total Harga:</div><!-- /.col-md-6 -->
+                <div class="col-md-6"><h4 class="total-price no-mt"> Rp. 800.000</h4></div><!-- /.col-md-6 -->
+              </div><!-- /.row -->
+
+              <a href="checkout.html" class="btn btn-danger u-full-width">Checkout</a>
+            </div><!-- /.pay-wrapper -->
+          </div><!-- /.col-md-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.col-md-8 -->
+      </main><!-- /.content -->
+    </div><!-- /.container -->
+
+    <section class="bottom-info">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="widget">
+              <h3 class="h1 no-mt">SumberVoucher</h3>
+              <p> <b>Address</b>: Jl. Iskandar Raya No 4, Jakarta Selatan 233567</p>
+              <p><b>Email</b>: hi@sumbervoucher.co.id</p>
+            </div><!-- /.widget -->
+          </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="widget">
+              <h3 class="h4 widget-title">Bantuan</h3>
+              <ul class="flat-list">
+                <li>
+                  <a href="#">Cara Belanja</a>
+                </li>
+                <li>
+                  <a href="#">Pembayaran</a>
+                </li>
+                <li>
+                  <a href="/#">Jaminan Aman</a>
+                </li>
+                <li>
+                  <a href="#e">Tips Berbelanja</a>
+                </li>
+              </ul>
+            </div><!-- /.widget -->
+          </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="widget">
+              <h3 class="h4 widget-title">Sitemap</h3>
+              <ul class="flat-list">
+                <li>
+                  <a href="#">Konsumen</a>
+                </li>
+                <li>
+                  <a href="#">Pembayaran</a>
+                </li>
+                <li>
+                  <a href="/#">Jaminan Aman</a>
+                </li>
+                <li>
+                  <a href="#e">Tips Berbelanja</a>
+                </li>
+              </ul>
+            </div><!-- /.widget -->
+          </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="widget">
+              <h3 class="h4 widget-title">Bantuan</h3>
+
+              <p>Dapatkan diskon dan promo terbaru dari kami. Silahkan masukkan alamat email anda dibawah ini.</p>
+
+              <form action="#">
+                <input type="email" placeholder="Email Anda" class="form-control input-lg" name="email_subs" id="email_subs" />
+                <br />
+                <button class="btn btn-lg btn-default">Langganan</button>
+              </form>
+            </div><!-- /.widget -->
+          </div><!-- /.col-md-3 col-sm-6 col-xs-6 -->
+
+
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.bottom-info -->
+
+    <footer class="footer">
+      <p>&copy; Copyright 2017 - Septian Ahmad Fujianto</p>
+    </footer><!-- /.footer -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="loginModalLabel">Login</h4>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="input-group u-full-width">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control u-full-width" value="">
+              </div>
+
+              <br />
+              <div class="input-group u-full-width">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control u-full-width" value="">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/jquery.matchHeight.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>

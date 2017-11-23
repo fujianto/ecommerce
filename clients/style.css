@@ -1,0 +1,181 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background: #fff url('images/dust_scratches.png') ;
+}
+
+a {
+	color: #d71149;
+}
+
+// Override Bootstrap
+.btn-danger {
+	background: #d71149;
+	border-color: #d71149;
+	background-image: none !important;
+}
+
+.btn-success {
+	background: #00796B;
+	border-color: #00796B;
+}
+
+
+.header .navbar {
+	margin-bottom: 0;
+	background: #d71149;
+}
+
+.no-mt{
+	margin-top: 0;
+}
+
+.no-pl {
+	padding-left: 0;
+}
+
+.no-mb{
+	margin-bottom: 0;
+}
+
+.featured-slider img {
+	width: 100%;
+}
+
+.box-title {
+	font-size: 15px;
+	margin: 10px 0 2px 0;
+	font-weight: 300;
+}
+
+.widget-title {
+	margin: 0 0 1.7rem 0;
+	font-weight: 600;
+}
+
+.box-price {
+	font-size: 14px;
+	font-weight: normal;
+	margin: 5px 0 2rem 0;
+}
+
+main.content {
+	position: relative;
+	margin-top: 3rem;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.product-grid-wrapper {
+	margin: 2rem 0;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+	color:#FFC107;
+}
+
+.site-title {
+	font-weight: bold;
+	color #fff;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+	color: #FFC107;
+}
+
+.u-full-width {
+	width: 100%;
+}
+
+.footer {
+	padding: 1rem;
+	text-align: center;
+	background: #d71149;
+	color: #fff;
+}
+
+.footer p {
+	margin: 0;
+}
+
+.action-wrapper {
+	display: flex;
+}
+
+.action-wrapper .btn-buy, .action-wrapper .btn-cart {
+	flex: 1;
+}
+
+.flat-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bottom-info {
+	padding: 6rem 0 2rem 0;
+	margin-top: 3rem;
+	background: #ddd url('images/round.png');
+}
+
+.shop-title {
+	font-family: 'Spectral SC', serif;
+	margin-bottom: 2rem;
+	font-size: 3rem;
+}
+
+.cart-item img {
+	width: 100px;
+	height: 100px;
+}
+
+.cancle-cart {
+	font-size: 2rem;
+}
+
+.cart-item {
+	background: #fbfbfb;
+	padding: 1rem;
+	border: 1px solid #eceaea;
+	border-bottom: 2px solid #ddd;
+}
+
+.modal-dialog-wide {
+	width: 1000px;
+}
+
+.btn-cart {
+	position: relative;
+}
+
+.btn-cart #cart-count {
+	position: absolute;
+	top: 4px;
+	right: -1px;
+	background: orange;
+	padding: 0px 5px;
+	border-radius: 50%;
+	height: 19px;
+	font-size: 10px;
+	min-width: 15px;
+}
+
+.modal-body .input-group {
+	margin-bottom: 2rem;
+}
+
+.flex-wrapper .flex-item {
+	flex: 1;
+	margin: 0 10px;
+}
+
+.flex-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
