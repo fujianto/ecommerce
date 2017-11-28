@@ -76,6 +76,20 @@ var app = new Vue({
 
         }).catch(err => console.error(err));
 		},
+
+		modifyProduct(payload) {
+			console.log(payload);
+
+			axios.delete(`${apiEndpointRoot}/products/${payload.product._id}`)
+			.then(product => {
+          // Add it to products state
+          alert("Product Berhasil Dihapus");
+
+          console.log(product.data);
+          this.products.splice(payload.index, 1);
+
+        }).catch(err => console.error(err));
+		}
 	},
 
 

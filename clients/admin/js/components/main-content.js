@@ -52,7 +52,7 @@ Vue.component('main-content', {
 									</thead>
 
 									<tbody>
-										<product-row :item="product" :key="index" :index="index" v-for="(product, index) in products"></product-row>
+										<product-row @single-product-modified="productModified" :item="product" :key="index" :index="index" v-for="(product, index) in products"></product-row>
 									</tbody>
 								</table>
 								<!-- /.table -->
@@ -66,5 +66,10 @@ Vue.component('main-content', {
 		</div><!-- /.container -->
 	</main><!-- /.wrap -->
 	`,
-	props: ['products']
+	props: ['products'],
+	methods: {
+		productModified(payload) {
+			this.$emit('product-modified', payload)
+		}
+	}
 })

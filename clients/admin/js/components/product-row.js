@@ -8,10 +8,15 @@ var tableRow = Vue.component('product-row', {
 			<td>{{ item.quantity }}</td>
 			<td>{{ item.category }}</td>
 			<td>
-				<a href="#" class="btn btn-warning btn-edit"><i class="fa fa-cog"></i> Ubah</a>
-				<a href="#" class="btn btn-danger btn-edit"><i class="fa fa-times-circle"></i> Hapus</a>
+				<a href="javascript:void(0)" @click="modifyProduct()" class="btn btn-warning btn-edit"><i class="fa fa-cog"></i> Ubah</a>
+				<a href="javascript:void(0)" @click="modifyProduct()" class="btn btn-danger btn-edit"><i class="fa fa-times-circle"></i> Hapus</a>
 			</td>
 		</tr>
 	`,
-	props: ['item', 'index']
+	props: ['item', 'index'],
+	methods: {
+		modifyProduct() {
+			this.$emit('single-product-modified', { index: this.index, product: this.item })
+		}
+	}
 });
