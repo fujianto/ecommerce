@@ -1,4 +1,4 @@
-const apiEndpointRoot = "http://api.septianfujianto.com";
+const apiEndpointRoot = "http://localhost:3000";
 const customerID = "5a14fe517f697714134e3bc4"
 
 
@@ -6,12 +6,20 @@ var app = new Vue({
 	el: '#app',
 	// State
 	data: {
+		uploadImage: '',
 		products: [],
 		users: [],
 		transactions: []
 	},
+	components : {
+		// product-row
+	},
 	// Methods
 	methods: {
+		testMethod() {
+			alert("Test Method Called");
+		},
+
 		getHumanDate(date) {
 			return new Date(date).toString()
 		},
@@ -30,8 +38,7 @@ var app = new Vue({
 			return rupiah;
 		},
 
-
-		loadLatestTransactions() {
+		loadTransactions() {
 			axios.get(`${apiEndpointRoot}/transactions`, {
 				headers: {
 					'customerId': customerID
@@ -43,31 +50,24 @@ var app = new Vue({
 			}).catch(err => console.error(err.message));
 		},
 
-		loadLatestProducts() {
+		loadProducts() {
 			axios.get(`${apiEndpointRoot}/products`)
 			.then(products => {
+				console.log('~~~~~~~~Latest Product ', products);
 				this.products = products.data
 
-			}).catch(err => console.error(err.message));
+			}).catch(err => console.error(err));
 		},
 
-		createNewProduct() {
-			console.log('~~~~~~~~~~ Create New Product')
-			let productName = this.$refs.productName.value;
-			let productPrice = this.$refs.productPrice.value;
-			let productQuantity = this.$refs.productQuantity.value;
-			let productCategory = this.$refs.productCategory.value;
-			let productImage = this.$refs.productImage.value;
+		createNewProduct(payload) {
+			var formData = new FormData();
+			formData.append('name', payload.name);
+			formData.append('price',  payload.price);
+			formData.append('quantity',  payload.quantity);
+			formData.append('category',  payload.category);
+			formData.append('image',  payload.image);
 
-			let data = {
-				name: productName,
-				price: productPrice,
-				quantity: productQuantity,
-				category: productCategory,
-				image: productImage
-			};
-
-			axios.post(`${apiEndpointRoot}/products`, data)
+			axios.post(`${apiEndpointRoot}/products`, formData)
 			.then(newProduct => {
           // Add it to products state
           alert("Product Berhasil Ditambahkan");
@@ -76,5 +76,11 @@ var app = new Vue({
 
         }).catch(err => console.error(err));
 		},
+	},
+
+
+	created() {
+		this.loadProducts();
+		this.loadTransactions();
 	}
 })

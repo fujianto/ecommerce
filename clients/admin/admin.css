@@ -71,3 +71,7 @@ a {
 .u-full-width {
 	width: 100%;
 }
+
+.small-thumbnail {
+	max-width: 150px;
+}
