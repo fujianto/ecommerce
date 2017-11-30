@@ -1,28 +1,28 @@
-Vue.component('modal-product', {
+Vue.component('modal-edit-product', {
 	template: `
-		<div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="newProductModalLabel">
+		<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="newProductModalLabel">New Product</h4>
+						<h4 class="modal-title" id="editProductModalLabel">Edit Product</h4>
 					</div>
 					<div class="modal-body">
-						<form action="#" v-on:submit="createNewProduct()">
+						<form action="#">
 							<div class="input-group u-full-width">
-								<input class="form-control" type="text" id="productName" ref="productName" name="productName" placeholder="Nama Produk" />
+								<input class="form-control" type="text" id="productName" ref="productName" name="productName" placeholder="Nama Produk" :value="item.name" />
 							</div>
 
 							<div class="input-group u-full-width">
-								<input class="form-control" type="text" id="productPrice" ref="productPrice" name="productPrice" placeholder="Harga Produk" />
+								<input class="form-control" type="text" id="productPrice" ref="productPrice" name="productPrice" placeholder="Harga Produk" :value="item.price" />
 							</div>
 
 							<div class="input-group u-full-width">
-								<input class="form-control" type="text" id="productQuantity" ref="productQuantity" name="productQuantity" placeholder="Jumlah Stok Produk" />
+								<input class="form-control" type="text" id="productQuantity" ref="productQuantity" name="productQuantity" placeholder="Jumlah Stok Produk" :value="item.quantity"/>
 							</div>
 
 							<div class="input-group u-full-width">
-								<input class="form-control" type="text" id="productCategory" ref="productCategory" name="productCategory" placeholder="Kategori Produk" />
+								<input class="form-control" type="text" id="productCategory" ref="productCategory" name="productCategory" placeholder="Kategori Produk" :value="item.category"/>
 							</div>
 
 							<div class="input-group u-full-width">
@@ -47,7 +47,7 @@ Vue.component('modal-product', {
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button @click.prevent="newProduct()" type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Add Product</button>
+						<button @click.prevent="editProduct()" type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Add Product</button>
 						<!-- <input type="submit" class="btn btn-primary" value="Add Product" /> -->
 					</div>
 				</div>
@@ -63,7 +63,7 @@ Vue.component('modal-product', {
 		}
 	},
 	methods: {
-		newProduct() {
+		editProduct() {
 
 			let product = {
 				name: this.$refs.productName.value,
@@ -73,7 +73,7 @@ Vue.component('modal-product', {
 				image: this.uploadFile
 			};
 
-			this.$emit('create-new-product', product);
+			this.$emit('editing-product', product);
 		},
 
 		onFileChange(e) {
@@ -81,10 +81,11 @@ Vue.component('modal-product', {
       if (!files.length)
         return;
       this.createImage(files[0]);
+
+      this.$emit('editing-product-image', files[0]);
     },
 
     createImage(file) {
-      console.log('~~~~ Image ini file', file);
       var image = new Image();
       var reader = new FileReader();
       var vm = this;
@@ -102,13 +103,4 @@ Vue.component('modal-product', {
     }
 
 	},
-	created() {
-		console.log('~~~~~~~~~~created')
-		// this.product = this.item;
-	},
-	mounted() {
-		console.log('~~~~~~~~~~MOUNTED')
-		console.log(this)
-		// this.product = this.item;
-	}
 })

@@ -40,23 +40,25 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
-	ProductModel.findOneAndUpdate(
-		{ _id : ObjectId(req.params.productId) },
-		{
-			name:  req.body.name || product.name,
-			image: req.body.image || product.image,
-			price:    +req.body.price || product.price,
-			quantity:  +req.body.quantity || product.quantity,
-			category:  req.body.category || product.category,
-		}, {upsert:true},
-		function(err, product){
-			if (err) {
-				res.status(500).send({message: err.message});
-			} else {
-				res.status(200).send({product: product, message: 'Product Updated'});
+	ProductModel.findOne({ _id : ObjectId(req.params.productId) })
+		.then(product => {
+			if (product) {
+				let productImage = typeof req.file  !== 'undefined' ? req.file.cloudStoragePublicUrl : product.image;
+
+				product.name =  req.body.name || product.name;
+				product.image = productImage;
+				product.price =    +req.body.price || product.price;
+				product.quantity =  +req.body.quantity || product.quantity;
+				product.category =  req.body.category || product.category;
+
+				product.save()
+					.then(updatedProduct => {
+						res.status(200).send({product: updatedProduct, message: 'Product Updated'});
+
+					}).catch(err => res.status(500).send(err.message));
 			}
-		}
-	);
+
+		}).catch(err => res.status(500).send(err.message));
 }
 
 const destroy = (req, res) => {

@@ -9,7 +9,14 @@ var app = new Vue({
 		uploadImage: '',
 		products: [],
 		users: [],
-		transactions: []
+		transactions: [],
+		editedProduct: {
+			name : '',
+			price : 0,
+			quantity: 0,
+			category: 0
+		},
+		editedProductIndex: 0,
 	},
 	components : {
 		// product-row
@@ -38,18 +45,6 @@ var app = new Vue({
 			return rupiah;
 		},
 
-		loadTransactions() {
-			axios.get(`${apiEndpointRoot}/transactions`, {
-				headers: {
-					'customerId': customerID
-				}
-			})
-			.then(transactions => {
-				this.transactions = transactions.data
-
-			}).catch(err => console.error(err.message));
-		},
-
 		loadProducts() {
 			axios.get(`${apiEndpointRoot}/products`)
 			.then(products => {
@@ -71,30 +66,56 @@ var app = new Vue({
 			.then(newProduct => {
           // Add it to products state
           alert("Product Berhasil Ditambahkan");
-          console.log(newProduct.data);
           this.products.push(newProduct.data.product);
 
         }).catch(err => console.error(err));
 		},
 
 		modifyProduct(payload) {
-			console.log(payload);
-
-			axios.delete(`${apiEndpointRoot}/products/${payload.product._id}`)
-			.then(product => {
+			if (payload.action === 'delete') {
+				axios.delete(`${apiEndpointRoot}/products/${payload.product._id}`)
+				.then(product => {
           // Add it to products state
           alert("Product Berhasil Dihapus");
 
-          console.log(product.data);
           this.products.splice(payload.index, 1);
 
         }).catch(err => console.error(err));
-		}
-	},
+			}
 
+			if (payload.action === 'edit') {
+				 // Show Modal Edit
+				 console.log("Editing index", payload.index, payload.product);
+				 this.editedProduct = payload.product;
+				 this.editedProductIndex = payload.index;
+			}
+		},
+
+		editCurrentProduct(payload) {
+			var formData = new FormData();
+			formData.append('name', payload.name);
+			formData.append('price',  payload.price);
+			formData.append('quantity',  payload.quantity);
+			formData.append('category',  payload.category);
+			formData.append('image',  this.uploadImage);
+
+      axios.put(`${apiEndpointRoot}/products/${this.editedProduct._id}`, formData)
+      .then(newProduct => {
+          // Add it to products state
+          alert("Product Berhasil Di Edit");
+          console.log(newProduct.data.product)
+          this.products.splice(this.editedProductIndex, 1, newProduct.data.product);
+          this.uploadImage = "";
+
+        }).catch(err => console.error(err));
+    },
+
+    setUploadImage(payload) {
+    	this.uploadImage = payload;
+    },
+	},
 
 	created() {
 		this.loadProducts();
-		this.loadTransactions();
 	}
 })
