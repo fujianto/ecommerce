@@ -16,8 +16,8 @@ var app = express();
 const cors = require('cors')
 //diff
 
-const url = 'mongodb://localhost:27017/ecommerce';
-// const url = process.env.MONGODB_URL
+// const url = 'mongodb://localhost:27017/ecommerce';
+const url = process.env.MONGODB_URL
 const mongoose = require('mongoose');
 mongoose.connect(url);
 
