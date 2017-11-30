@@ -38,7 +38,7 @@ Vue.component('modal-edit-product', {
 										</div><!-- /.col-md-12 -->
 
 										<div class="col-md-12">
-												<button class="btn btn-danger" @click="removeImage">Remove image</button>
+												<button class="btn btn-danger" @click.prevent="removeImage">Remove image</button>
 										</div><!-- /.col-md-12 -->
 									</div><!-- /.row -->
 								</div>
