@@ -103,8 +103,12 @@
                     </div>
                   </form>
                 </li>
-                <li>
+                <li><a class="btn-register" href="#" data-toggle="modal" data-target="#registerModal">Register</a></li>
+                <li v-if="token === null">
                   <a class="btn-login" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                </li>
+                <li v-if="token !== null">
+                  <a class="btn-logout" href="#" @click.prevent="doLogout">Logout</a>
                 </li>
               </ul>
             </div>
@@ -311,18 +315,72 @@
               <form action="#">
                 <div class="input-group u-full-width">
                   <label>Username</label>
-                  <input type="text" name="username" class="form-control u-full-width" value="">
+                  <input type="text" name="username" ref="username" class="form-control u-full-width" value="">
                 </div>
 
                 <br />
                 <div class="input-group u-full-width">
                   <label>Password</label>
-                  <input type="password" name="password" class="form-control u-full-width" value="">
+                  <input type="password" name="password" ref="password" class="form-control u-full-width" value="">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="doLogin()">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="registerModalLabel">Daftar Akun Baru</h4>
+            </div>
+            <div class="modal-body">
+              <form action="#">
+                <div class="input-group u-full-width">
+                  <label>Username</label>
+                  <input type="text" name="username" ref="username" class="form-control u-full-width" value="">
+                </div>
+      
+                <br />
+                <div class="input-group u-full-width">
+                  <label>Password</label>
+                  <input type="password" name="password" ref="password" class="form-control u-full-width" value="">
+                </div>
+                <br />
+
+                <div class="input-group u-full-width">
+                  <label>Full Name</label>
+                  <input type="text" name="name" ref="name" class="form-control u-full-width" value="">
+                </div>
+                <br />
+
+                <div class="input-group u-full-width">
+                  <label>Email</label>
+                  <input type="email" name="email" ref="email" class="form-control u-full-width" value="">
+                </div>
+                <br/>
+
+                <div class="input-group u-full-width">
+                  <label>Address</label>
+                  <textarea type="text" name="address" ref="address" class="form-control u-full-width"></textarea>
+                </div>
+               
+                <div class="input-group u-full-width">
+                  <label>Telephone</label>
+                  <input type="tel" name="phone" ref="phone" class="form-control u-full-width" value="">
+                </div>
+                <br />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="doRegister()">Register</button>
             </div>
           </div>
         </div>
@@ -342,7 +400,7 @@
               </div>
 
               <div class="cart-wrapper" v-if="carts.length > 0">
-                <div class="cart-item" v-for="cart in carts">
+                <div class="cart-item" v-for="(cart, index) in carts">
                   <div class="row">
                     <div class="col-md-3">
                       <img v-bind:src="`${cart.image}`" alt="pic">
@@ -359,7 +417,7 @@
                     </div><!-- /.col-md-4 -->
 
                     <div class="col-md-1">
-                      <a href="#" class="cancle-cart">✖</a>
+                      <a href="#" class="cancle-cart" @click="removeCartItem(cart, index)">✖</a>
                     </div><!-- /.col-md-1 -->
                   </div><!-- /.row -->
                 </div><!-- /.cart-item -->

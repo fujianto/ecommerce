@@ -9,7 +9,7 @@ Vue.component('admin-header', {
 				<div class="col-md-8">
 					<nav class="admin-menu">
 						<ul>
-							<li><p>Welcome, <span id="user-name">Budi</span></p></li>
+							<li><p>Welcome, <span id="user-name">${localStorage.getItem('name')}</span></p></li>
 							<li> | <a href="#" class="btn-logout"> Logout</a></li>
 						</ul>
 					</nav><!-- /.admin-menu -->

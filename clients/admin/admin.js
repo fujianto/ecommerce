@@ -1,6 +1,8 @@
-// const apiEndpointRoot = "http://localhost:3000";
 const apiEndpointRoot = "http://api.septianfujianto.com";
-const customerID = "5a14fe517f697714134e3bc4"
+const customerID = localStorage.getItem('id');
+
+// const apiEndpointRoot = "http://api.septianfujianto.com";
+// const customerID = "5a14fe517f697714134e3bc4"
 
 
 var app = new Vue({
@@ -49,7 +51,6 @@ var app = new Vue({
 		loadProducts() {
 			axios.get(`${apiEndpointRoot}/products`)
 			.then(products => {
-				console.log('~~~~~~~~Latest Product ', products);
 				this.products = products.data
 
 			}).catch(err => console.error(err));
@@ -113,10 +114,18 @@ var app = new Vue({
 
     setUploadImage(payload) {
     	this.uploadImage = payload;
-    },
+		},
+		
+		isLogin() {
+			if (localStorage.getItem('token') === null || localStorage.getItem('token') === '') {
+				alert("Login dulu sebelum masuk Admin")
+				window.location = "/"
+			}
+		}
 	},
 
 	created() {
 		this.loadProducts();
+		this.isLogin();
 	}
 })
