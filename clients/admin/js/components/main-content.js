@@ -35,7 +35,7 @@ Vue.component('main-content', {
 							</div><!-- /.table-wrapper -->
 						</div>
 						<div role="tabpanel" class="tab-pane active" id="product">
-							<h2 class="admin-heading-title">Product Area</h2>
+							<h2 class="admin-heading-title">Product Area 		<a href="#" style="margin-left:2rem;" class="btn btn-info btn-new-product" data-toggle="modal" data-target="#newProductModal"><i class="fa fa-plus-circle"></i> Tambah Produk baru</a></h2>
 
 							<div class="table-wrapper">
 								<table class="table">
@@ -56,8 +56,6 @@ Vue.component('main-content', {
 									</tbody>
 								</table>
 								<!-- /.table -->
-
-								<a href="#" class="btn btn-info btn-new-product" data-toggle="modal" data-target="#newProductModal"><i class="fa fa-plus-circle"></i> Tambah Produk baru</a>
 							</div><!-- /.table-wrapper -->
 						</div>
 					</div>
