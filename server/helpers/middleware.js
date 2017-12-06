@@ -7,7 +7,7 @@ const signIn = (req, res, next) => {
     customerController.findByUsername(req.body.username)
       .then(customer => {
         if (customer) {
-          
+
           // Login dengan Account biasa
           Helper.comparePassword(req.body.password, customer.password)
             .then(verifiedAccount => {
@@ -17,7 +17,7 @@ const signIn = (req, res, next) => {
                   _id: customer._id,
                   username: customer.username,
                   password: customer.password,
-                  
+
                 }).then(token => {
                     req.header.token = token;
                     req.header.email = customer.email;
@@ -32,6 +32,8 @@ const signIn = (req, res, next) => {
               }
 
             }).catch(err => res.status(401).send({ message: "Unauthorized User", error: err.message }));
+        } else {
+          res.status(401).send({ message: "Unauthorized User", error: err.message })
         }
 
       }).catch(err => res.send(err.message));

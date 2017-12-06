@@ -19,29 +19,29 @@ var app = new Vue({
   },
   methods: {
     xdebug(data) {
-      
+
       return data;
     },
-    
+
     getHumanDate(date) {
       return new Date(date).toString()
     },
-    
+
     formatRupiah (angka) {
       var number_string = angka.toString(),
       sisa    = number_string.length % 3,
       rupiah  = number_string.substr(0, sisa),
       ribuan  = number_string.substr(sisa).match(/\d{3}/g);
-      
+
       if (ribuan) {
         separator = sisa ? '.' : '';
         rupiah += separator + ribuan.join('.');
       }
-      
+
       return rupiah;
     },
-    
-    
+
+
     loadLatestTransactions() {
       if (this.id !== '' && typeof this.id !== 'undefined' && this.id !== null) {
         axios.get(`${apiEndpointRoot}/transactions`, {
@@ -51,21 +51,21 @@ var app = new Vue({
         })
         .then(transactions => {
           this.transactions = transactions.data
-          
+
         }).catch(err => console.error(err.message));
       } else {
         console.log("Login First to show transaction history")
       }
     },
-    
+
     loadLatestProducts() {
       axios.get(`${apiEndpointRoot}/products`)
       .then(products => {
         this.products = products.data
-        
+
       }).catch(err => console.error(err.message));
     },
-    
+
     findDuplicate(arr, input) {
       let cart = [];
       let isDuplicate = {
@@ -73,7 +73,7 @@ var app = new Vue({
         index: null,
         _id: null
       };
-      
+
       arr.forEach(function(item, index) {
         if (item._id === input._id) {
           isDuplicate.duplicate = true;
@@ -81,28 +81,28 @@ var app = new Vue({
           isDuplicate._id = item._id;
         }
       });
-      
+
       return isDuplicate;
     },
-    
+
     getTotalCart() {
       let total = 0;
-      
+
       this.carts.forEach(function(cart, index) {
         total += cart.price;
       });
-      
+
       return total;
     },
-    
+
     addToCart(product, event) {
       if (event) {
         event.preventDefault()
       }
-      
+
       this.message = `1 buah "${product.name}" ditambahkan kedalam keranjang belanja`;
       this.lastTransaction = "";
-      
+
       let cartProduct = {
         _id: null,
         name: null,
@@ -113,13 +113,13 @@ var app = new Vue({
         price: null,
         quantity: 0
       };
-      
+
       let tempCart = this.findDuplicate(this.carts, product);
-      
+
       if (tempCart.duplicate === true) {
         this.carts[tempCart.index].quantity += 1;
         this.carts[tempCart.index].price = this.carts[tempCart.index].price * this.carts[tempCart.index].quantity;
-        
+
       } else {
         cartProduct._id = product._id;
         cartProduct.name = product.name;
@@ -129,15 +129,15 @@ var app = new Vue({
         cartProduct.name = product.name;
         cartProduct.price = product.price;
         cartProduct.quantity += 1;
-        
+
         this.carts.push(cartProduct);
       }
     },
-    
+
     removeCartItem(product, index) {
       this.carts.splice(index, 1);
     },
-    
+
     completePayment(carts) {
       if (carts.length > 0) {
         var order = {
@@ -148,7 +148,7 @@ var app = new Vue({
             transaction_date: new Date().toISOString()
           }
         };
-        
+
         this.carts.forEach(function(cart, index) {
           order.transaction.productlist.push({
             productId: cart._id,
@@ -157,24 +157,25 @@ var app = new Vue({
             subTotal: cart.price
           })
         });
-        
+
         axios.post(`${apiEndpointRoot}/transactions`, order)
         .then(success => {
           this.carts = [];
           this.transactions.push(success.data.transaction);
           this.lastTransaction = success.data.message;
           // alert(success.data.message);
-          
+
         }).catch(err => console.error(err.message));
       } else {
         // alert("Cart masih kosong");
         this.lastTransaction = "Cart masih kosong";
       }
     },
-    
+
     doLogin() {
       let username = this.$refs.username.value;
       let password = this.$refs.password.value;
+      console.log('Login')
 
       axios.post(apiEndpointRoot+'/signin', { username: username, password: password })
         .then(({data}) => {
@@ -188,7 +189,7 @@ var app = new Vue({
           this.token = data.token;
           window.location = "index.html";
 
-        }).catch(err => alert({ message: 'Something Wrong', error: err.message }));
+        }).catch(err => alert("Gagal login "+err.message));
     },
 
     doLogout() {
@@ -214,25 +215,25 @@ var app = new Vue({
         name : name,
         email : email,
         address : address,
-        phone : phone 
+        phone : phone
       }).then(({ data }) => {
         console.log(data);
         alert("Daftar akun berhasil");
-        
+
       }) .catch(err => console.log(err));
     },
-    
+
     clearLastTransaction() {
       this.lastTransaction = "";
     },
-    
+
     createNewProduct() {
       let productName = this.$refs.productName.value;
       let productPrice = this.$refs.productPrice.value;
       let productQuantity = this.$refs.productQuantity.value;
       let productCategory = this.$refs.productCategory.value;
       let productImage = this.$refs.productImage.value;
-      
+
       let data = {
         name: productName,
         price: productPrice,
@@ -240,19 +241,19 @@ var app = new Vue({
         category: productCategory,
         image: productImage
       };
-      
+
       axios.post(`${apiEndpointRoot}/products`, data)
       .then(newProduct => {
         // Add it to products state
         alert("Product Berhasil Ditambahkan");
         this.products.push(newProduct.data.product);
-        
+
       }).catch(err => console.error(err));
     }
   },
   created() {
     this.loadLatestProducts();
     this.loadLatestTransactions();
-    
+
   }
 })

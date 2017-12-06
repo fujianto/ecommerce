@@ -1,7 +1,7 @@
-const apiEndpointRoot = "http://api.septianfujianto.com";
+// const apiEndpointRoot = "http://localhost:3000";
 const customerID = localStorage.getItem('id');
 
-// const apiEndpointRoot = "http://api.septianfujianto.com";
+const apiEndpointRoot = "http://api.septianfujianto.com";
 // const customerID = "5a14fe517f697714134e3bc4"
 
 
@@ -115,7 +115,7 @@ var app = new Vue({
     setUploadImage(payload) {
     	this.uploadImage = payload;
 		},
-		
+
 		isLogin() {
 			if (localStorage.getItem('token') === null || localStorage.getItem('token') === '') {
 				alert("Login dulu sebelum masuk Admin")
