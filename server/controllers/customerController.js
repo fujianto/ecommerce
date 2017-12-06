@@ -85,7 +85,7 @@ const destroy = (req, res) => {
 }
 
 const signIn = (req, res) => {
-	res.send(
+	res.status(200).send(
 		{
 			id: req.header._id,
 			token: req.header.token,
