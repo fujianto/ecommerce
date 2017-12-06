@@ -173,13 +173,14 @@ var app = new Vue({
     },
 
     doLogin() {
-      let username = this.$refs.username.value;
-      let password = this.$refs.password.value;
-      console.log('Login')
+      let username = this.$refs.login_username.value;
+      let password = this.$refs.login_password.value;
+      console.log('Login ', username)
 
       axios.post(apiEndpointRoot+'/signin', { username: username, password: password })
         .then(({data}) => {
           console.log(data);
+
           alert("Sukses login");
           localStorage.setItem('id', data.id);
           localStorage.setItem('email', data.email);

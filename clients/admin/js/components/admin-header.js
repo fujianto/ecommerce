@@ -10,12 +10,24 @@ Vue.component('admin-header', {
 					<nav class="admin-menu">
 						<ul>
 							<li><p>Welcome, <span id="user-name">${localStorage.getItem('name')}</span></p></li>
-							<li> | <a href="#" class="btn-logout"> Logout</a></li>
+							<li> | <a href="#" class="btn-logout" @click.prevent="doLogout"> Logout</a></li>
 						</ul>
 					</nav><!-- /.admin-menu -->
 				</div><!-- /.col-md-8 -->
 			</div><!-- /.row -->
 		</header><!-- /.admin-header -->
-	`
+	`,
+	methods: {
+		doLogout() {
+			this.token = null;
+
+			localStorage.removeItem('id');
+			localStorage.removeItem('email')
+			localStorage.removeItem('name')
+			localStorage.removeItem('token')
+
+			window.location = "/"
+		}
+	}
 })
 

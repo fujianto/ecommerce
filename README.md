@@ -1,2 +1,5 @@
 # ecommerce
-Demo: http://stores.septianfujianto.cf
+
+Demo: http://stores.septianfujianto.com
+
+Backup: http://stores.septianfujianto.cf

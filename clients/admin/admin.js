@@ -13,6 +13,7 @@ var app = new Vue({
 		products: [],
 		users: [],
 		transactions: [],
+		token: localStorage.getItem('token'),
 		editedProduct: {
 			name : '',
 			price : 0,
@@ -121,7 +122,7 @@ var app = new Vue({
 				alert("Login dulu sebelum masuk Admin")
 				window.location = "/"
 			}
-		}
+		},
 	},
 
 	created() {

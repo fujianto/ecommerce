@@ -315,18 +315,18 @@
               <form action="#">
                 <div class="input-group u-full-width">
                   <label>Username</label>
-                  <input type="text" name="username" ref="username" class="form-control u-full-width" value="">
+                  <input type="text" name="login_username" ref="login_username" class="form-control u-full-width" value="">
                 </div>
 
                 <br />
                 <div class="input-group u-full-width">
                   <label>Password</label>
-                  <input type="password" name="password" ref="password" class="form-control u-full-width" value="">
+                  <input type="password" name="login_password" ref="login_password" class="form-control u-full-width" value="">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="doLogin()">Login</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="doLogin">Login</button>
             </div>
           </div>
         </div>
@@ -347,7 +347,7 @@
                   <label>Username</label>
                   <input type="text" name="username" ref="username" class="form-control u-full-width" value="">
                 </div>
-      
+
                 <br />
                 <div class="input-group u-full-width">
                   <label>Password</label>
@@ -371,7 +371,7 @@
                   <label>Address</label>
                   <textarea type="text" name="address" ref="address" class="form-control u-full-width"></textarea>
                 </div>
-               
+
                 <div class="input-group u-full-width">
                   <label>Telephone</label>
                   <input type="tel" name="phone" ref="phone" class="form-control u-full-width" value="">
